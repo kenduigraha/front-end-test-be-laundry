@@ -33,7 +33,7 @@ export default function ProductSold(props: ProductSoldProps) {
   if (isLoading) {
     return (
       <div className="flex h-full w-full flex-col items-center justify-center">
-        <Spinner />
+        <Spinner onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
       </div>
     );
   }
@@ -44,9 +44,12 @@ export default function ProductSold(props: ProductSoldProps) {
         <pre className="text-center font-sans text-black">{`${query.error}`}</pre>
         <Button
           onClick={() => {
-            console.log('try again')
+            console.log('try again');
             query.refetch();
           }}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+          placeholder={undefined}
         >
           Try Again
         </Button>
