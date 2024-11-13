@@ -42,7 +42,7 @@ export default function TopSellingProduct() {
       <table className="absolute w-full table-auto">
         <thead className="sticky top-0 bg-white">
           <tr>
-            {Object.values(headers).map((header, index) => {
+            {Object.values(headers).slice(0, 2).map((header, index) => {
               return (
                 <th key={index}>
                   <div className={`${header.className} p-4 font-normal`}>

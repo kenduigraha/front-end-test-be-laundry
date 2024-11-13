@@ -7,8 +7,48 @@ export const headers: {
     text: "Name",
     className: "text-left",
   },
-  value: {
+  price: {
     text: "Value",
     className: "text-center",
   },
+  id: {
+    text: "",
+    className: ""
+  },
+  image: {
+    text: "",
+    className: ""
+  },
+  description: {
+    text: "",
+    className: ""
+  },
+  sku: {
+    text: "",
+    className: ""
+  },
+  stock: {
+    text: "",
+    className: ""
+  },
+  category_id: {
+    text: "",
+    className: ""
+  },
+  user_id: {
+    text: "",
+    className: ""
+  },
+  active: {
+    text: "",
+    className: ""
+  },
+  created_at: {
+    text: "",
+    className: ""
+  },
+  updated_at: {
+    text: "",
+    className: ""
+  }
 };
