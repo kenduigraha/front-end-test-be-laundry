@@ -28,7 +28,7 @@ export default function MainPage() {
       <div className="absolute flex w-full flex-col items-start justify-start gap-6 p-6">
         <Card className="flex h-[420px] w-full flex-col gap-3 pb-[72px]">
           <div className="b-3 flex w-full flex-none flex-row items-center gap-3 font-poppins">
-            <div className="w-full truncate text-lg font-semibold">{`Product Sold`}</div>
+            <div className="w-full truncate text-lg font-semibold text-black">{`Product Sold`}</div>
             <div className="flex flex-shrink">
               <Select
                 variant="outlined"
