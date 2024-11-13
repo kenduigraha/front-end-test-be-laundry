@@ -4,20 +4,23 @@ import { useState } from "react";
 import Card from "../../common/Card";
 import ProductSold from "../product/sold/ProductSold";
 import { useProductReportQuery } from "../product/sold/ProductSold/hooks/query";
-// import TopSellingProduct from "../product/top-selling/TopSellingProduct";
+import TopSellingProduct from "../product/top-selling/TopSellingProduct";
+import { useGetAllProductQuery } from "../product/top-selling/TopSellingProduct/hooks/query";
 
 const selectValues = ["This week", "This month", "This year"];
 
 export default function MainPage() {
   const [selectValue, _setSelectValue] = useState(selectValues[0]);
   
-  // const query = useProductReportQuery();
-  const { data, refetch } = useProductReportQuery(selectValue);
+  const { refetch: refetchProductReport } = useProductReportQuery(selectValue);
+  
+  const { refetch: refetchTopSellingProduct } = useGetAllProductQuery(selectValue);
 
   const onSelectValue = (value?: string) => {
     _setSelectValue(`${value}`);
     // will refetch new API call with selected date
-    refetch();
+    refetchProductReport();
+    refetchTopSellingProduct();
   };
 
   return (
@@ -48,7 +51,9 @@ export default function MainPage() {
         </Card>
         <Card className="flex h-72 w-full max-w-sm flex-col gap-3">
           <div className="b-3 flex w-full flex-none flex-row items-center gap-3 font-poppins">
-            <div className="w-full truncate text-lg font-semibold">{`Top selling product`}</div>
+            <div className="w-full truncate text-lg font-semibold text-black">
+              Top selling product
+            </div>
             <div className="flex flex-shrink">
               <Select
                 variant="outlined"
@@ -66,7 +71,7 @@ export default function MainPage() {
               </Select>
             </div>
           </div>
-          {/* <TopSellingProduct /> */}
+          <TopSellingProduct />
         </Card>
       </div>
     </div>
