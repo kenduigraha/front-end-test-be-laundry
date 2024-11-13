@@ -11,3 +11,12 @@
   font-family: "Poppins";
   src: url("../fonts/Poppins-Regular.ttf");
 }
+
+div.flex div.relative {
+  min-width: calc(32 * 4px);
+}
+
+label.flex {
+  z-index: -50;
+}
+
