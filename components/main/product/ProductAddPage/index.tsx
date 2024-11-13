@@ -59,6 +59,16 @@ export default function ProductAddPage() {
                 value={price}
               />
               <div className="flex flex-grow"></div>
+              <Button
+                className={`hidden bg-[#56E4A0] px-12 text-white shadow-none xl:flex`}
+                style={{ textTransform: "none" }}
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
+                onClick={publish}
+              >
+                Publish
+              </Button>
             </div>
           </div>
           <UploadImage className="xl:hidden" />
