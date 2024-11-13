@@ -35,6 +35,9 @@ export default function MainPage() {
                 className="border-[#CCE0EE]"
                 value={selectValue}
                 onChange={onSelectValue}
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}             
               >
                 {selectValues.map((e, index) => {
                   return (
@@ -60,6 +63,9 @@ export default function MainPage() {
                 className="border-[#CCE0EE]"
                 value={selectValue}
                 onChange={onSelectValue}
+                placeholder={undefined}
+                onPointerEnterCapture={undefined}
+                onPointerLeaveCapture={undefined}
               >
                 {selectValues.map((e, index) => {
                   return (
