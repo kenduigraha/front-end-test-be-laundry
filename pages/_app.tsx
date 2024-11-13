@@ -1,4 +1,5 @@
 import React from "react";
+import Head from 'next/head';
 import { usePathname } from 'next/navigation';
 import { ThemeProvider } from "@material-tailwind/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -12,9 +13,12 @@ export default function MyApp({ Component, pageProps }) {
     const navigationRoute = usePathname();
     return (
         <ThemeProvider>
-            <QueryClientProvider client={queryClient}>  
+            <QueryClientProvider client={queryClient}>
+                <Head>
+                    <title>Be Laundry</title>
+                </Head>
                 <MainLayout>
-                    {navigationRoute === '/' && (<MainPage />)}
+                    {['/', '/home'].includes(navigationRoute) && (<MainPage />)}
                     <Component {...pageProps} />
                 </MainLayout>            
             </QueryClientProvider> 

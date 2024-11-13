@@ -34,7 +34,7 @@ function NavigationButton(props: {
 
 export default function MainLayout(props: { children?: ReactNode }) {
   const navigations = {
-    "/": {
+    "/home": {
       title: "Home",
       icon: <CgHomeAlt />,
     },
