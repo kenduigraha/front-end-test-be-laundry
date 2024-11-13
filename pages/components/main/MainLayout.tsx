@@ -58,8 +58,6 @@ export default function MainLayout(props: { children?: ReactNode }) {
 
   const title = navigations[navigationRoute as NavigationRoute]?.title ?? "";
 
-  console.log('props: ', props)
-
   return (
     <div className="flex h-screen min-h-screen w-full min-w-full flex-row bg-bubbles font-sans">
       <div className="flex h-full w-full flex-row">
