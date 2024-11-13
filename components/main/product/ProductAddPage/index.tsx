@@ -6,6 +6,7 @@ import TextField from "../../../common/TextField";
 import MiniTextField from "../../../common/TextField/mini";
 import { Category } from "./src/category";
 import { UploadImage } from "./src/UploadImage";
+import { useProductAddPageStore } from "./store";
 
 function Headline(props: { children?: ReactNode }) {
   return (
@@ -16,6 +17,21 @@ function Headline(props: { children?: ReactNode }) {
 }
 
 export default function ProductAddPage() {
+  const {
+    publish,
+    setName,
+    setDescription,
+    setSKU,
+    setStock,
+    setPrice,
+  } = useProductAddPageStore();
+
+  const name = useProductAddPageStore((state) => state.name);
+  const description = useProductAddPageStore((state) => state.description);
+  const sku = useProductAddPageStore((state) => state.sku);
+  const stock = useProductAddPageStore((state) => state.stock);
+  const price = useProductAddPageStore((state) => state.price);
+
   return (
     <div className="relative h-full w-full overflow-auto">
       <div
@@ -26,27 +42,23 @@ export default function ProductAddPage() {
       >
         <div className="flex w-full flex-col items-center gap-6 p-6">
           <Headline>Add New Product</Headline>
-          <TextField label="Product Name" />
-          <TextArea label="Description" />
+          <TextField label="Product Name" value={name} onChange={(e) => setName(e.target.value)} />
+          <TextArea label="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
           <div className="flex w-full flex-row gap-6">
-            <MiniTextField label="SKU" />
-            <MiniTextField label="Stock" />
+            <MiniTextField label="SKU" value={sku} onChange={(e) => setSKU(e.target.value)} />
+            <MiniTextField label="Stock" value={stock.toString()} onChange={(e) => setStock(e.target.value)} />
           </div>
           <Category />
           <div className="flex w-full flex-col gap-3">
             <div className="text-xl font-normal text-blue-500">Price</div>
             <div className="flex w-full flex-row items-center gap-6">
-              <input className="h-[60px] w-[237px] rounded-[10px] border border-blue-500 bg-white px-3 text-black" />
+              <input
+                type="number"
+                className="h-[60px] w-[237px] rounded-[10px] border border-blue-500 bg-white px-3 text-black"
+                onChange={(e) => setPrice(Number(e.target.value))}
+                value={price}
+              />
               <div className="flex flex-grow"></div>
-              <Button
-                className={`hidden bg-[#56E4A0] px-12 text-white shadow-none xl:flex`}
-                style={{ textTransform: "none" }}
-                placeholder={undefined}
-                onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined}
-              >
-                Publish
-              </Button>
             </div>
           </div>
           <UploadImage className="xl:hidden" />
@@ -56,6 +68,7 @@ export default function ProductAddPage() {
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
+            onClick={publish}
           >
             Publish
           </Button>
