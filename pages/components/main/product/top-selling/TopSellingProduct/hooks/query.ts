@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { API_BASE_URL, GET_ALL_PRODUCT_END_POINT, STATIC_AUTH_TOKEN } from "../../../../../utils";
+import { TopSellingProductRow } from "../types";
 
 export type ProductReportQuery = {
   created_at: string;
@@ -21,7 +22,9 @@ async function fetchAllProduct(filterDate) {
     );
     const data = await res.json();
 
-    if (data) return data;
+    const rows  = data.response.map((product: TopSellingProductRow) => ({ name: product.name, price: product.price}))
+
+    if (rows) return rows;
     return [];
   } catch (error) {
     console.log('error: ', error)

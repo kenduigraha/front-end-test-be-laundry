@@ -1,3 +1,4 @@
+import { Button, Spinner } from "@material-tailwind/react";
 import { useTopSellingProduct } from "./hooks";
 
 function TopSellingProductDivider() {
@@ -7,8 +8,32 @@ function TopSellingProductDivider() {
 }
 
 export default function TopSellingProduct() {
-  const { headers, rows } = useTopSellingProduct();
+  const { headers, rows, isLoading, error } = useTopSellingProduct();
 
+  if (isLoading) {
+    return (
+      <div className="flex h-full w-full flex-col items-center justify-center">
+        <Spinner />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex h-full w-full flex-col items-center justify-center gap-3">
+        <pre className="text-center font-sans text-black">{`${error}`}</pre>
+        <Button
+          onClick={() => {
+            console.log('try again')
+            query.refetch();
+          }}
+        >
+          Try Again
+        </Button>
+      </div>
+    );
+  }
+  
   return (
     <div className="relative h-full w-full overflow-y-auto font-poppins text-sm font-medium text-[#58595F]">
       <table className="absolute w-full table-auto">

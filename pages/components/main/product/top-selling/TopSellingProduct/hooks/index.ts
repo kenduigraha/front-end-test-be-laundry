@@ -1,13 +1,21 @@
-import { TopSellingProductRow } from "../types";
 import { useGetAllProductQuery } from "./query";
 import { headers } from "./src/headers";
 
 export function useTopSellingProduct() {
-  const { data } = useGetAllProductQuery();
-  const rows  = data.response.map((product: TopSellingProductRow) => ({ name: product.name, price: product.price}))
+  const query = useGetAllProductQuery();
+  const isLoading = [
+    query.isInitialLoading,
+    query.isLoading,
+    query.isFetching,
+    query.isRefetching,
+  ].reduce((a, b) => {
+    return a || b;
+  });
   return {
     headers,
-    rows,
+    rows: query.data,
+    isLoading,
+    error: query.error,
   };
 }
 
