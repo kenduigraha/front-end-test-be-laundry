@@ -1,6 +1,6 @@
 import { ChartOptions } from "chart.js";
 
-import { ProductReportChartType } from "../../../../ProductSold";
+import { ProductReportChartType } from "../../..";
 
 export function useProductReportConfigOptions(): ChartOptions<ProductReportChartType> {
   return {

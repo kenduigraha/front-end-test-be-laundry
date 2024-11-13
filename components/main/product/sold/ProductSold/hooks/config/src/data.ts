@@ -1,6 +1,6 @@
 import { ChartData } from "chart.js";
 
-import { ProductReportChartType } from "../../../../ProductSold";
+import { ProductReportChartType } from "../../..";
 import { ProductReportQuery } from "../../query";
 
 export type ProductSoldConfigDataProps = {

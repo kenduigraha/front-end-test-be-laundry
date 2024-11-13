@@ -8,7 +8,7 @@ import Image from "next/image";
 
 import { usePathname } from 'next/navigation';
 
-import Logo from "../../assets/logo.svg";
+import Logo from "../../public/assets/logo.svg";
 
 function NavigationButton(props: {
   href?: string;
