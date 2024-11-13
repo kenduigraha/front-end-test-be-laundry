@@ -8,12 +8,12 @@ function TopSellingProductDivider() {
 }
 
 export default function TopSellingProduct() {
-  const { headers, rows, isLoading, error } = useTopSellingProduct();
+  const { headers, rows, isLoading, error, refetch } = useTopSellingProduct();
 
   if (isLoading) {
     return (
       <div className="flex h-full w-full flex-col items-center justify-center">
-        <Spinner />
+        <Spinner onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
       </div>
     );
   }
@@ -24,9 +24,12 @@ export default function TopSellingProduct() {
         <pre className="text-center font-sans text-black">{`${error}`}</pre>
         <Button
           onClick={() => {
-            console.log('try again')
-            query.refetch();
+            console.log('try again');
+            refetch();
           }}
+          onPointerEnterCapture={undefined}
+          onPointerLeaveCapture={undefined}
+          placeholder={undefined}
         >
           Try Again
         </Button>

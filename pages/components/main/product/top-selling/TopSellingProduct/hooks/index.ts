@@ -16,6 +16,7 @@ export function useTopSellingProduct() {
     rows: query.data,
     isLoading,
     error: query.error,
+    refetch: query.refetch,
   };
 }
 
